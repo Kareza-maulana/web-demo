@@ -1,10 +1,8 @@
-version: '3.8'
-
 services:
   web:
-    image: php:8.2-apache
+    build: .
     ports:
-      - "8080:80"
+      - "8282:8282"
     volumes:
       - .:/var/www/html
     environment:
@@ -13,8 +11,4 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
-    command: >
-      bash -c "apt-get update && 
-      apt-get install -y libpq-dev && 
-      docker-php-ext-install pdo pdo_pgsql && 
-      apache2-foreground"
+    restart: unless-stopped

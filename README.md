@@ -14,10 +14,10 @@ Aplikasi web untuk mengelola data produk dan pelanggan toko dengan fitur CRUD le
 
 ## Tech Stack
 
-- **Backend**: PHP 8.2
+- **Backend**: PHP 8.2-FPM
 - **Database**: PostgreSQL (Aiven Cloud)
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Server**: Apache
+- **Server**: Nginx
 - **Deployment**: Docker + Railway
 
 ## Setup Development
@@ -42,12 +42,14 @@ Jalankan file `sql/schema.sql` ke database PostgreSQL Anda:
 psql -h YOUR_HOST -p YOUR_PORT -U YOUR_USER -d YOUR_DATABASE -f sql/schema.sql
 ```
 
-### 4. Jalankan dengan Docker (Opsional)
+### 4. Jalankan dengan Docker
 ```bash
 docker-compose up -d
 ```
 
-Akses aplikasi di: `http://localhost:8080`
+Akses aplikasi di: `http://localhost:8282`
+
+**Note**: Setup ini menggunakan Nginx + PHP-FPM untuk menghindari error Apache MPM (AH00534)
 
 ### 5. Atau Jalankan dengan Laragon/XAMPP
 - Copy folder proyek ke `C:\laragon\www\`
