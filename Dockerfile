@@ -21,5 +21,8 @@ WORKDIR /var/www/html
 # Expose port
 EXPOSE 8282
 
+# Create startup script
+RUN echo '#!/bin/bash\nphp-fpm -D && nginx -g "daemon off;"' > /start.sh && chmod +x /start.sh
+
 # Start PHP-FPM and nginx
-CMD service php8.2-fpm start && nginx -g 'daemon off;'
+CMD ["/start.sh"]
